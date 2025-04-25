@@ -1,103 +1,76 @@
-import Image from "next/image";
+import Card from "@/components/Card";
+import VideoPlayer from "@/components/VideoPlayer";
+import { Text } from "@/components/Text";
+import Button from "@/components/Button";
+import { ArrowDown } from "lucide-react";
+import { ImageWithDescription } from "@/components/ImageWithDescription";
+import FeaturedExperiences from "@/components/FeaturedExperiences";
+import Details from "@/components/Details";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className='flex w-full flex-col items-center px-8 py-4'>
+      <div className="flex flex-col gap-4 items-center mb-[80px]">
+        
+        {/* Top Large Card */}
+        <Card className="w-full flex rounded-[16px] items-center m-4" variation="purple">
+          <VideoPlayer autoPlay loop className="rounded-[12px] h-[681px]" src="/VideoOfPeople.mp4" />
+          <div className="flex flex-col gap-4 mx-auto items-center">
+            <Text color="cyan" className="text-center" variation="h1">HEY DALLAS, WE&apos;RE HOME</Text>
+            <Text color="cyan" variation="h2">Netflix House Dallas is now open</Text>
+          </div>
+        </Card>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Rest of the content */}
+      <div className="flex flex-col gap-[80px] w-full px-[100px] items-center">
+        <div className="flex flex-col gap-8 w-full items-center">
+          <Text color="white" className="text-center" variation="h3">
+            Netflix House is your home for fandom. Explore experiences that drop you into the story, 
+            snack on bites, inspired by your favorite shows, snag a piece of the story to take home, 
+            and more.
+          </Text>
+          <div className="flex gap-4">
+            <Button variation="white">Get Tickets Now</Button>
+            <Button variation="gray" iconRight={<ArrowDown className="w-4 h-4 font-bold" />}>
+              Hours & Location
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <div className="flex flex-col gap-4 w-full">
+          <Text variation="h2">Netflix Just Got Real</Text>
+          <div className="flex gap-4">
+            <ImageWithDescription image="/PeopleLookingUp.jpeg" title="Drop into the story" description="We know you’ran (it’s cool, we’ve also watched Wednesday 37 times). Now, you can step inside the story, with immersive experiences that let you play a part in your favorite Netflix shows." />
+            <ImageWithDescription image="/Arcade.jpeg" title="Every visit is a new episode" description="You know how there’s always something new on Netflix? It’s like that here, too – we’ll be updating the experiences, the dishes, and even the merch so there’s something new for you to explore, every time you visit." />
+            <ImageWithDescription image="/PeoplePartying.jpeg" title="Play it your way" description="There’s so many different ways to go deeper into the story at Netflix House. Explore immersive experiences, play a round of mini golf, grab a bite, pick up a souvenir – whatever makes your inner fan happy." />
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 w-full">
+          <Text variation="h2">Discover the Featured Experiences</Text>
+          <FeaturedExperiences 
+            variation="gradient-blue"
+            mainImage="/StrangerThings.jpeg" 
+            logoImage="/StrangerThingsLogo.png" 
+            title="Hawkins has fallen: a catastrophic eartquake has torn the town apart." 
+            duration="1 hr" 
+            age="All Ages" 
+            price="$100"
+            reverse
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <FeaturedExperiences 
+            variation="gradient-pink"
+            mainImage="/SquidGameGuy.jpeg" 
+            logoImage="/SquidGameLogo.png" 
+            title="Hawkins has fallen: a catastrophic eartquake has torn the town apart." 
+            duration="1 hr" 
+            age="All Ages" 
+            price="$100"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+        <img src="/Dallas.jpeg" alt="Dallas" className="rounded-[16px]" />
+        <Details />
+      </div>
+      </div>
     </div>
   );
 }
